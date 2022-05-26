@@ -8,8 +8,9 @@ var questionsEl = document.getElementById("questions");
 var gameoverEl = document.getElementById("gameover");
 var submitEl = document.getElementById("submit");
 
+
 // Timer that will start when button is pushed 
-var timeLeft = 75;
+var timeLeft = 60;
 
 function displayTime() {
 
@@ -19,20 +20,21 @@ function displayTime() {
 
 function setTime() {
     displayTime();
-    // TODO: have questions start 
+    
     var timerInterval = setInterval(function () {
         timeLeft--;
         displayTime();
 
         if (timeLeft < 1) {
             clearInterval(timerInterval);
-            // TODO: add action for gameover content 
+             
         }
 
     }, 1000);
 
 }
 
+// objet array to hold questions and answers
 var qAndA = [
     {
         question: "Around how many coding languages are there?",
@@ -87,8 +89,43 @@ var qAndA = [
 ];
 
 
-// event listeners here
-startEl.addEventListener("click", setTime);
+function makeQuestion() {
+    var currentQuestionEl = document.createElement('h2');
+    currentQuestionEl.innerHTML = qAndA[0].question;
 
+    for(i = 0; i < Object.keys(qAndA[0].answers).length; i++) {
+        var currentAnswerEl = document.createElement('h3');
+        currentAnswerEl.innerHTML = qAndA[0].answers[i+1];
+        currentAnswerEl.addEventListener('click',function(event) {
+            var rightAnswer = qAndA[0].question[0].answers[1].correctAnswer[0];
+            if(!rightAnswer) {
+                timeLeft -10;
+            }
+        })
+        currentQuestionEl.appendChild(currentAnswerEl);
+    }
+    
+    
+    //add event listener before append to currentAnswerEl if it is wrong answer 10 sec from timer if right answer clear question. call makeQuestion with newQuestion 
+    
+    
+    
+    
+    questionsEl.appendChild(currentQuestionEl); 
+}
+
+
+
+// event listeners here
+startEl.addEventListener("click", function(event) {
+    setTime();
+    if(setTime) {
+        topEl.style.display = "none";
+        gameoverEl.style.display = "none";
+    }
+    makeQuestion();
+});
+
+// submit.addEventListener("click", scoreBoard);
 
 

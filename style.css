@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color:lightcoral;
+}
+
+#top {
+    display: inline-block;
+    flex-basis: auto;
+    margin-top: 45px;
+}
+
+p {
+    font-size: 20px;
+    margin-left: 75px;
+    margin-right: 75px;
+}
+
+#quiz {
+    display: inline-block;
+    flex-basis: auto;
+    padding: 50px;
+}
+
+#gameover {
+    display: inline-block;
+    flex-basis: auto;
+}
+
