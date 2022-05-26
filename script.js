@@ -1,62 +1,37 @@
-var state = 'quiz';
+// variables needed 
+var mainEl = document.getElementById("#main");
+var timerEl = document.querySelector(".timer");
+var topEl = document.getElementById("#top");
+var startEl = document.getElementById("#start");
+var quizEl = document.getElementById("#quiz");
+var questionsEl = document.getElementById("#questions");
+var gameoverEl = document.getElementById("#gameover");
+var submitEl = document.getElementById("#submit");
 
-var timerEl = document.querySelector("#timer"); 
-var titleEl = document.querySelector("#title");
-var contentEl = document.querySelector("#content");
-var gameoverEl = document.querySelector("#gameover");
-var startBtn = document.querySelector("#start button");
-var quizheaderEl = document.querySelector("#quizheader");
-var submitBtn = document.querySelector("#submit button");
-
-function screenStyle() {
-  if (state === 'title') {
-    titleEl.style.display = 'block';
-    contentEl.style.display = 'null';
-    gameoverEl.style.display = 'null';
-  } else if (state === 'content') {
-    titleEl.style.display = 'null';
-    contentEl.style.display = 'block';
-    gameoverEl.style.display = 'null';
-  } else if (state === 'gameover') {
-    titleEl.style.display = 'null';
-    contentEl.style.display = 'null';
-    gameoverEl.style.display = 'block';
-  }
-}
-
-function init() {
-  screenStyle();
-}
-
-startBtn.addEventListener("click", function() {
-  state = 'content';
-  displayState();
-  setTime();
-});
-
-function displayTime() {
-    timerEl.textContent = timeLeft;
-}
+startEl.addEventListener("click", displayTime);
 
 var timeLeft = 75;
 
-function setTime () {
+function displayTime() {
+    timerEl.textContent = timeLeft + " Tick Tock";
+}
+
+
+function setTime() {
     displayTime();
     var timerInterval = setInterval(function () {
         timeLeft--;
         displayTime();
 
-        if(timeLeft === 0) {
+        if (timeLeft === 0) {
             clearInterval(timerInterval);
-
+            //add action for gameover content 
         }
     }, 1000);
 
 }
 
-submitBtn.addEventListener("click", function () {
-  state = 'gameover';
-  displayState();
-});
+setTime();
 
-init();
+
+

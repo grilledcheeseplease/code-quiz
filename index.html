@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code Quiz</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz Challenge</title>
 </head>
-<body>
 
-    <h1 id="timer" style="text-align: right;"></h1>
+<body id="main">
+    
+    <h1 class="timer" style="text-align:center;"></h1>
 
-    <section id="title">
+    <section id="top">
 
-        <h2>Coding Quiz Challenge</h2>
+        <h2>Coding Hero Quiz</h2>
 
-        <button>Start Quiz</button>
-  
+        <p> Here is a challange for those who so choose to brave it. The journey will not be easy and at times you will wonder "Why am I doing this?", but just push on. Because in the end when you are standing victorious you will know it was worth it.</p>
+
+        <button id="start">Bring it on!</button>
+
     </section>
-  
-    <section id="content">
-        
-        <h2 id="quizheader">Questions</h2>
-        
+
+    <section id="quiz">
+
+        <h2>Questions</h2>
+
         <div id="questions">
 
         </div>
-    
+
     </section>
-  
+
     <section id="gameover">
-        
+
         <h2>Enter Initials</h2>
-    
-        <input type="text" />
-    
-        <button id="submitBtn">Submit</button>
+
+        <input type="text"/>
+
+        <button type="submit" id="submit">Submit Legacy</button>
 
     </section>
-  
-    <script src="./script.js"></script>
 
+    <script src="./script.js"></script>
+    
 </body>
 </html>
