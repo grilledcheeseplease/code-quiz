@@ -4,6 +4,7 @@ var timerEl = document.querySelector(".timer");
 var topEl = document.getElementById("top");
 var startEl = document.getElementById("start");
 var quizEl = document.getElementById("quiz");
+var titleEl = document.querySelector("#quiz h2");
 var questionsEl = document.getElementById("questions");
 var gameoverEl = document.getElementById("gameover");
 var submitEl = document.getElementById("submit");
@@ -12,27 +13,6 @@ var submitEl = document.getElementById("submit");
 // Timer that will start when button is pushed 
 var timeLeft = 60;
 
-function displayTime() {
-
-    timerEl.textContent = timeLeft + " Tick Tock";
-}
-
-
-function setTime() {
-    displayTime();
-
-    var timerInterval = setInterval(function () {
-        timeLeft--;
-        displayTime();
-
-        if (timeLeft < 1) {
-            clearInterval(timerInterval);
-
-        }
-
-    }, 1000);
-
-}
 
 // objet array to hold questions and answers
 var current = 0;
@@ -90,29 +70,55 @@ var qAndA = [
     }
 ];
 
-function makeQuestion() {
-    var currentQuestionEl = document.createElement('h2');
-    currentQuestionEl.innerHTML = qAndA[current].question;
+function displayTime() {
 
-    for(i = 0; i < Object.keys(qAndA[0].answers).length; i++) {
+    timerEl.textContent = timeLeft + " Tick Tock";
+}
+
+
+function setTime() {
+    displayTime();
+
+    var timerInterval = setInterval(function () {
+        timeLeft--;
+        displayTime();
+
+        if (timeLeft < 1) {
+            clearInterval(timerInterval);
+
+        }
+
+    }, 1000);
+
+}
+
+
+function makeQuestion() {
+    titleEl.textContent = qAndA[current].question;
+    questionsEl.innerHTML = "";
+    // tutor helped
+    for(i = 0; i < Object.keys(qAndA[current].answers).length; i++) {
         var currentAnswerEl = document.createElement('button');
         currentAnswerEl.innerHTML = qAndA[current].answers[i+1];
-        currentAnswerEl.addEventListener('click',function(event) {
-            rightAnswer = qAndA[i].correctAnswer;
-            if(qAndA[0].answers[i+1] === rightAnswer) {
-                timeLeft = timeLeft -10;
-            }else {
-                makeQuestion();
-            }
-        })
-        currentQuestionEl.appendChild(currentAnswerEl);
+        currentAnswerEl.dataset.index = i+1;
+        questionsEl.appendChild(currentAnswerEl);
     }
-
-    questionsEl.appendChild(currentQuestionEl); 
 }
 
 
 // event listeners here
+questionsEl.addEventListener('click',function(event) {
+    var rightAnswer = qAndA[current].correctAnswer;
+    console.log("hello", event.target.dataset.index, rightAnswer);
+    if (event.target.matches("button")) {
+        if(event.target.dataset.index !== rightAnswer) {
+            timeLeft = timeLeft - 10;
+        }
+
+    }
+    
+})
+
 startEl.addEventListener("click", function (event) {
     setTime();
     if (setTime) {
@@ -126,6 +132,7 @@ questionsEl.addEventListener('click', function (event) {
     var answerBtns = event.target;
     if (answerBtns.matches('button')) {
         current++;
+        // tutor helped
         if (current < qAndA.length && Object.keys(qAndA[current].answers).length) {
             makeQuestion();
         } else {
@@ -139,6 +146,6 @@ questionsEl.addEventListener('click', function (event) {
 
 
 
-submit.addEventListener("click", scoreBoard);
+// submit.addEventListener("click", scoreBoard);
 
 
