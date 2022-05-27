@@ -20,14 +20,14 @@ function displayTime() {
 
 function setTime() {
     displayTime();
-    
+
     var timerInterval = setInterval(function () {
         timeLeft--;
         displayTime();
 
         if (timeLeft < 1) {
             clearInterval(timerInterval);
-             
+
         }
 
     }, 1000);
@@ -35,6 +35,8 @@ function setTime() {
 }
 
 // objet array to hold questions and answers
+var current = 0;
+
 var qAndA = [
     {
         question: "Around how many coding languages are there?",
@@ -84,48 +86,53 @@ var qAndA = [
             3: "Only one time!",
             4: "Probably still crying."
         },
-        correctAnswer: "3"
+        correctAnswer: "4"
     }
 ];
 
-
 function makeQuestion() {
     var currentQuestionEl = document.createElement('h2');
-    currentQuestionEl.innerHTML = qAndA[0].question;
+    currentQuestionEl.innerHTML = qAndA[current].question;
 
     for(i = 0; i < Object.keys(qAndA[0].answers).length; i++) {
-        var currentAnswerEl = document.createElement('h3');
-        currentAnswerEl.innerHTML = qAndA[0].answers[i+1];
+        var currentAnswerEl = document.createElement('button');
+        currentAnswerEl.innerHTML = qAndA[current].answers[i+1];
         currentAnswerEl.addEventListener('click',function(event) {
-            var rightAnswer = qAndA[0].question[0].answers[1].correctAnswer[0];
-            if(!rightAnswer) {
+            var rightAnswer = qAndA[i].correctAnswer[i];
+            if(event === !rightAnswer) {
                 timeLeft -10;
             }
         })
         currentQuestionEl.appendChild(currentAnswerEl);
     }
-    
-    
-    //add event listener before append to currentAnswerEl if it is wrong answer 10 sec from timer if right answer clear question. call makeQuestion with newQuestion 
-    
-    
-    
-    
+
     questionsEl.appendChild(currentQuestionEl); 
 }
 
 
-
 // event listeners here
-startEl.addEventListener("click", function(event) {
+startEl.addEventListener("click", function (event) {
     setTime();
-    if(setTime) {
+    if (setTime) {
         topEl.style.display = "none";
         gameoverEl.style.display = "none";
     }
     makeQuestion();
 });
 
+questionsEl.addEventListener('click', function (event) {
+    var answerBtns = event.target;
+    if (answerBtns.matches('button')) {
+        current++;
+        if (current < qAndA.length && Object.keys(qAndA[current].answers).length) {
+            makeQuestion();
+        } else {
+            gameoverEl.style.display = 'block';
+            topEl.style.display = 'none';
+            quizEl.style.display = 'none';
+        }
+    }
+});
 // submit.addEventListener("click", scoreBoard);
 
 
