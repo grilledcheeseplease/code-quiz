@@ -1,6 +1,6 @@
 // variables needed 
 var mainEl = document.getElementById("main");
-var timerEl = document.querySelector("timer");
+var timerEl = document.querySelector(".timer");
 var topEl = document.getElementById("top");
 var startEl = document.getElementById("start");
 var quizEl = document.getElementById("quiz");
@@ -98,9 +98,11 @@ function makeQuestion() {
         var currentAnswerEl = document.createElement('button');
         currentAnswerEl.innerHTML = qAndA[current].answers[i+1];
         currentAnswerEl.addEventListener('click',function(event) {
-            var rightAnswer = qAndA[i].correctAnswer[i];
-            if(event === !rightAnswer) {
-                timeLeft -10;
+            rightAnswer = qAndA[i].correctAnswer;
+            if(qAndA[0].answers[i+1] === rightAnswer) {
+                timeLeft = timeLeft -10;
+            }else {
+                makeQuestion();
             }
         })
         currentQuestionEl.appendChild(currentAnswerEl);

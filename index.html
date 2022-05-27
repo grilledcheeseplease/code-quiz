@@ -10,53 +10,38 @@
 
 <body id="main">
     
-    <!--timer--> 
-    <h2 id="timer" style="text-align: center"></h2>
+    <h1 class="timer" style="text-align:center;"></h1>
 
-    <!--container for first section-->
-    <div id="container">
+    <section id="top">
 
-        <div id="startTitle">
+        <h2>Coding Hero Quiz</h2>
 
-            <span>Coding Hero Quiz</span>
+        <p> Here is a challange for those who so choose to brave it. Your answers will not only have effects on your ego but also the time. For every answer that is incorrect 10 seconds will be deducted from the clock. If the clock reaches 0, time is up and your journey is over. Can you conquer the quiz in 60 seconds or will the quiz conquer you?</p>
+
+        <button id="start">Challenge Accepted</button>
+
+    </section>
+
+    <section id="quiz">
+
+        <h2>Questions</h2>
+
+        <div id="questions">
 
         </div>
 
-        <div id="prequel">
+    </section>
 
-            <p>Here is a challange for those who so choose to brave it. Your answers will not only have effects on your ego but also the time. For every answer that is incorrect 10 seconds will be deducted from the clock. If the clock reaches 0, time is up and your journey is over. Can you conquer the quiz in 60 seconds or will the quiz conquer you?</p>
+    <section id="gameover">
 
-        </div>
-        
-        <!--button to start quiz and time-->
-        <button id="startBtn">Challange Accepted</button>
+        <h2>Enter Initials</h2>
 
-    </div>
+        <input type="text"/>
 
-    <!--section for quiziness-->
-    <div id="quiz">
+        <button type="submit" id="submit">Submit Legacy</button>
 
-        <div id="quizTitle">Questions</div>
+    </section>
 
-        <div id="questionsSpot"></div>
-
-    </div>
-
-    <!--section for intials-->
-    <footer id="gameOver">
-        
-        <h2 id="intialTitle">Enter Initials:</h2>
-
-        <input type="text" id="intialsBox"/>
-
-        <button type="submit" id="submitBtn">Submit Legacy</button>
-
-        <div id="scoreBoard"></div>
-
-    </footer>
-
-
-    
     <script src="./script.js"></script>
     
 </body>
