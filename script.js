@@ -1,6 +1,6 @@
 // variables needed 
 var mainEl = document.getElementById("main");
-var timerEl = document.querySelector(".timer");
+var timerEl = document.querySelector("timer");
 var topEl = document.getElementById("top");
 var startEl = document.getElementById("start");
 var quizEl = document.getElementById("quiz");
@@ -133,6 +133,10 @@ questionsEl.addEventListener('click', function (event) {
         }
     }
 });
-// submit.addEventListener("click", scoreBoard);
+
+
+
+
+submit.addEventListener("click", scoreBoard);
 
 

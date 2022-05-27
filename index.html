@@ -9,21 +9,51 @@
 </head>
 
 <body id="main">
-    <!--button to start quiz and time-->
-    <div id="startBtn"><button>Challange Accepted</button></div>
+    
+    <!--timer--> 
+    <h2 id="timer" style="text-align: center"></h2>
 
-    <!--container for questions-->
+    <!--container for first section-->
     <div id="container">
+
         <div id="startTitle">
+
             <span>Coding Hero Quiz</span>
+
         </div>
+
         <div id="prequel">
+
             <p>Here is a challange for those who so choose to brave it. Your answers will not only have effects on your ego but also the time. For every answer that is incorrect 10 seconds will be deducted from the clock. If the clock reaches 0, time is up and your journey is over. Can you conquer the quiz in 60 seconds or will the quiz conquer you?</p>
+
         </div>
+        
+        <!--button to start quiz and time-->
+        <button id="startBtn">Challange Accepted</button>
+
     </div>
 
+    <!--section for quiziness-->
+    <div id="quiz">
 
+        <div id="quizTitle">Questions</div>
 
+        <div id="questionsSpot"></div>
+
+    </div>
+
+    <!--section for intials-->
+    <footer id="gameOver">
+        
+        <h2 id="intialTitle">Enter Initials:</h2>
+
+        <input type="text" id="intialsBox"/>
+
+        <button type="submit" id="submitBtn">Submit Legacy</button>
+
+        <div id="scoreBoard"></div>
+
+    </footer>
 
 
     

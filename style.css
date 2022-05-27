@@ -1,31 +1,104 @@
-body {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color:lightcoral;
 }
 
-#top {
-    display: inline-block;
-    flex-basis: auto;
-    margin-top: 45px;
+body {
+    background:darksalmon;
 }
 
-p {
-    font-size: 20px;
-    margin-left: 75px;
-    margin-right: 75px;
+#container {
+    width: 540px;
+    border-radius: 12px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+#startTitle {
+    display: flex;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    padding: 0 145px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#prequel p {
+    margin: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+#startBtn {
+    margin: 0 145px;
+    padding: 15px 30px;
+    font-size: 25px;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-radius: 12px;
 }
 
 #quiz {
-    display: inline-block;
-    flex-basis: auto;
-    padding: 50px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-radius: 12px;
+    background:cadetblue;
+    justify-content: center;
 }
 
-#gameover {
-    display: inline-block;
-    flex-basis: auto;
+#quizTitle {
+    display: flex;
+    height: 60px;
+    font-size: 30px;
+    font-weight: bolder;
 }
 
+#questionSpot {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    background:dimgrey;
+}
+
+#gameOver {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: center;
+    justify-content: center;
+}
+
+#intialTitle {
+    display: inline-flex;
+    align-self: baseline;
+}
+
+#intialsBox {
+    display: flex;
+    padding: 5px;
+}
+
+#submitBtn {
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+}
+
+#scoreBoard {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    background:dimgrey;
+}
